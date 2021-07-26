@@ -37,7 +37,17 @@ const routes = [
     meta: {
       title: '首页'
     },
-    component: () => import('../views/home/homepage')
+    component: () => import('../views/home/homepage'),
+    children: [
+      {
+        path: '/',
+        name: 'ConfigList',
+        meta: {
+          title: '浏览器配置文件列表'
+        },
+        component: () => import('../views/home/config_list')
+      },
+    ],
   },
 ]
 

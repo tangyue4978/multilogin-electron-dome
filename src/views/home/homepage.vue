@@ -1,9 +1,9 @@
 <template>
   <div class="homepage_box">
-    <Sidebar />
+    <Sidebar @changeMenu="changeMenu" />
 
     <v-container class="main_box">
-      <router-view />
+      <router-view :key="$route.fullpath" />
     </v-container>
   </div>
 </template>
@@ -16,6 +16,17 @@ export default {
 
   components: {
     Sidebar,
+  },
+
+  mounted() {
+
+  },
+
+  methods: {
+    // 切换菜单
+    changeMenu(router) {
+      this.$router.replace(router).catch(() => {})
+    }
   }
 }
 </script>

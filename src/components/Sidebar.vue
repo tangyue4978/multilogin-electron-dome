@@ -33,6 +33,7 @@
             :key="item.title"
             link
             :disabled="item.isLock"
+            @click="emitMenuChange(item)"
         >
           <v-list-item-icon v-if="item.icon">
             <v-icon :color="item.isLock ? 'rgb(115, 147, 222)' : 'white'" size="20">{{ item.icon }}</v-icon>
@@ -79,7 +80,7 @@
 </template>
 
 <script>
-import {shell} from "electron";
+import { shell } from "electron";
 
 export default {
   name: "Sidebar",
@@ -90,7 +91,13 @@ export default {
         {
           title: '所有浏览器配置文件',
           icon: 'mdi-home',
-          isLock: false
+          isLock: false,
+          router: {
+            path: '/homepage',
+            query: {
+              tab: 0
+            }
+          }
         },
         {
           title: '团队成员',
@@ -125,12 +132,24 @@ export default {
             color: 'rgba(255, 255, 255, 0.8)',
             size: 20
           },
-          isLock: false
+          isLock: false,
+          router: {
+            path: '/homepage',
+            query: {
+              tab: 1
+            }
+          }
         },
         {
           title: '未分配（0）',
           icon: '',
-          isLock: false
+          isLock: false,
+          router: {
+            path: '/homepage',
+            query: {
+              tab: 2
+            }
+          }
         },
       ], // 菜单
       userInfo: {
@@ -144,6 +163,11 @@ export default {
     // 打开默认浏览器链接
     openUrl(url) {
       shell.openExternal(url)
+    },
+
+    // 触发菜单改变
+    emitMenuChange(item) {
+      this.$emit('changeMenu', item.router)
     }
   }
 }

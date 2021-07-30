@@ -112,17 +112,26 @@ export default {
         {
           title: '我的账户',
           icon: 'mdi-account-box',
-          isLock: false
+          isLock: false,
+          router: {
+            path: '/account'
+          }
         },
         {
           title: '插件',
           icon: 'mdi-file-document-multiple',
-          isLock: false
+          isLock: false,
+          router: {
+            path: '/plugins'
+          }
         },
         {
           title: '客服中心',
           icon: 'mdi-alert-circle',
-          isLock: false
+          isLock: false,
+          router: {
+            path: '/services'
+          }
         },
         {
           title: '分组',

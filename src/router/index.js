@@ -47,6 +47,30 @@ const routes = [
         },
         component: () => import('../views/home/config_list')
       },
+      {
+        path: '/account',
+        name: 'Account',
+        meta: {
+          title: '我的账户'
+        },
+        component: () => import('../views/home/account')
+      },
+      {
+        path: '/plugins',
+        name: 'Plugins',
+        meta: {
+          title: '插件'
+        },
+        component: () => import('../views/home/plugins')
+      },
+      {
+        path: '/services',
+        name: 'Services',
+        meta: {
+          title: '客服中心'
+        },
+        component: () => import('../views/home/services')
+      }
     ],
   },
 ]

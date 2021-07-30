@@ -18,6 +18,7 @@
                 required
                 @input="$v.email.$touch()"
                 @blur="$v.email.$touch()"
+                @keydown.enter="onSubmit"
             ></v-text-field>
 
             <v-text-field
@@ -28,6 +29,7 @@
                 required
                 @input="$v.password.$touch()"
                 @blur="$v.password.$touch()"
+                @keydown.enter="onSubmit"
             >
               <v-icon
                   slot="append"
@@ -42,6 +44,7 @@
                 class="mt-5 white--text"
                 color="blue"
                 @click="onSubmit"
+                @keydown.enter="onSubmit"
             >
               登录
               <v-icon right>mdi-login</v-icon>

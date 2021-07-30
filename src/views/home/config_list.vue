@@ -5,11 +5,11 @@
         <span class="text-sm-h5" style="color: rgb(156, 156, 156);">浏览器配置文件列表</span>
       </v-col>
       <v-col class="text-left" sm="2">
-        <div class="mode_box d-flex">
-          <div :class="['mode_item', 'cursor-pointer', 'd-flex', 'justify-center', 'align-center', currentMode === 0 ? 'active' : '']" @click="currentMode = 0">
+        <div class="mode_box d-flex" @click="currentMode = (currentMode === 1 ? 0 : 1)">
+          <div :class="['mode_item', 'cursor-pointer', 'd-flex', 'justify-center', 'align-center', currentMode === 0 ? 'active' : '']">
             <v-icon color="#000000" size="16">mdi-cloud</v-icon>
           </div>
-          <div :class="['mode_item', 'cursor-pointer', 'd-flex', 'justify-center', 'align-center', currentMode === 1 ? 'active' : '']" @click="currentMode = 1">
+          <div :class="['mode_item', 'cursor-pointer', 'd-flex', 'justify-center', 'align-center', currentMode === 1 ? 'active' : '']">
             <v-icon color="#000000" size="16">mdi-television</v-icon>
           </div>
         </div>
@@ -27,9 +27,8 @@
 
     <v-divider />
 
-    <v-row class="config_body">
-      <v-col>
-        <div class="no_config d-flex flex-column justify-center align-center text-caption">
+    <div class="config_body">
+      <div class="no_config d-flex flex-column justify-center align-center text-caption">
           <v-img width="200" contain max-height="160" :src="require('../../assets/welcome.png')"></v-img>
           <p>
             <span>欢迎使用 </span>
@@ -43,8 +42,7 @@
           </p>
           <v-btn class="white--text text-caption" color="rgb(120, 179, 0)" @click="openUrl(orderUrl)">现在订购</v-btn>
         </div>
-      </v-col>
-    </v-row>
+    </div>
   </v-container>
 </template>
 
@@ -70,7 +68,11 @@ export default {
   },
 
   mounted() {
+    let query = this.$route.query
 
+    if (query.tab) {
+      this.currentTab = parseInt(query.tab || '')
+    }
   },
 
   methods: {

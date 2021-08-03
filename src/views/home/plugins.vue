@@ -14,8 +14,12 @@
     <div class="d-flex flex-column align-start text-sm-body-2">
       <v-row class="mt-4">
         <v-col>
-          <v-text-field class="ma-0 py-0 px-1 search_input" label="搜索插件..." v-model="search_text" hide-details>
-          </v-text-field>
+          <v-text-field
+              class="ma-0 py-0 px-1"
+              label="搜索插件..."
+              outlined
+              dense
+          ></v-text-field>
         </v-col>
       </v-row>
 
